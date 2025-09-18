@@ -1,0 +1,28 @@
+.navbar{
+  background-color: #000000;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  display: flex;
+}
+.navbar a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+.navbar a:hover {
+  color: #ac3e3e;
+
+}
+.title{
+  color: #ffffff;
+  display: flex;
+  text-align: center;
+    margin-right: auto;
+    font-size: 24px;
+    font-weight: bold;
+}
+.link{
+  color: #000;
+  text-decoration: none;
+}
