@@ -1,0 +1,10 @@
+.hero{
+    position: relative;
+    overflow: hidden;
+    height: auto;
+}
+.hero-video{
+    object-fit: cover;
+    width: 100%;
+}
+    
