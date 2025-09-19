@@ -1,6 +1,7 @@
 import Features from '../components/layout/Features';
 import Hero from '../components/layout/Hero';
 import About from '../components/layout/About';
+import CTA from '../components/layout/CTA';
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
         <Hero />
         <Features />
         <About />
+        <CTA />
         
     </div>
   );
