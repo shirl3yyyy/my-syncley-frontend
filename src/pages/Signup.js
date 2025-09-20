@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import './Signup.css'
 
 function Signup() {
   const location = useLocation();

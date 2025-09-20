@@ -1,18 +1,32 @@
 import { Link } from "react-router-dom";
-import './Navbar.css';// Import CSS file
-
+import { useState } from "react";
+import './Navbar.css';
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
-    <nav className="navbar">
-        <div className="title">Syncley</div>
-        <div className="links">
-        <Link to="/" className="navbar-brand">Home</Link>
-        <Link to="/about" className="navbar-brand">Findwork</Link>
-        <Link to="/contact" className="navbar-brand">Findfreelancers</Link>
-        <Link to="/login" className="navbar-brand">Login</Link>
-        <Link to="/signup" className="navbar-brand">Sign Up</Link>
-        </div>
+    <nav className="st-navbar">
+      <div className="st-navbar-logo">Syncley</div>
+
+    
+      <div className={`hamburger ${isOpen ? "open" : ""}`} onClick={toggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div className={`st-navbar-links ${isOpen ? "active" : ""}`}>
+        <Link to="/" className="st-navbar-link" onClick={() => setIsOpen(false)}>Home</Link>
+        <Link to="/about" className="st-navbar-link" onClick={() => setIsOpen(false)}>Features</Link>
+        <Link to="/contact" className="st-navbar-link" onClick={() => setIsOpen(false)}>Boards</Link>
+        <Link to="/findfreelancers" className="st-navbar-link" onClick={() => setIsOpen(false)}>Inspiration</Link>
+        <Link to="/findwork" className="st-navbar-link" onClick={() => setIsOpen(false)}>About</Link>
+        <Link to="/login" className="st-navbar-link nav-btn" onClick={() => setIsOpen(false)}>Login</Link>
+        <Link to="/signup" className="st-navbar-link nav-btn-primary" onClick={() => setIsOpen(false)}>Sign Up</Link>
+      </div>
     </nav>
   );
 }

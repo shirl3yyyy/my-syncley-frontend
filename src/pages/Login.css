@@ -1,14 +1,19 @@
 .login-container{
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 80vh;
+    background: linear-gradient(135deg, #00f7ff, #7b2ff7);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .login-title{
     font-size: 2rem;
     margin-bottom: 1rem;
+    text-align: center;
+    color: #333;
 }
 
 .login-form{
@@ -16,12 +21,37 @@
     flex-direction: column;
     width: 400px;
     gap: 0.5rem;
+    border-radius: 1 0px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    
+    
 }
 
 .login-button{
     padding: 0.5rem;
     width: 100px;
     align-self: center;
-    background-color: #007BFF;
+    background-color: linear-gradient(45deg, #00f7ff, #346be1);
     border: 0cap;
+    margin-top: 10px;
+    cursor: pointer;
+    color: #000000;
+    font-size: 1.1rem;
+
+}
+
+.login-form label{
+    font-size: 1.2rem;
+    margin-bottom: 0.1rem;
+    color: #333;
+    text-align: left;
+}
+
+.login-form input{
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #380b0b;
+    border-radius: 5px;
+    outline: none;
 }

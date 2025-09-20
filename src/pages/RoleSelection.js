@@ -8,7 +8,7 @@ function RoleSelection() {
     };
 
     return(
-        <div className="role-selection-container" style={{ display: 'flex', justifyContent: 'center', gap: '20px', padding: '20px' }}>
+        <div className="role-selection-container">
             <p>Select your role</p>
             <div className="role-buttons">
                 <button color="primary" onClick={() => handleSection("client")}>Client</button>

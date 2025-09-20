@@ -1,0 +1,47 @@
+     .role-selection-container {
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #00f7ff, #7b2ff7);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: #fff;
+}
+
+.role-selection-container p {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.role-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.role-buttons button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+}
+
+.role-buttons button:first-child {
+  background: linear-gradient(45deg, #00f7ff, #346be1);
+}
+
+.role-buttons button:last-child {
+  background: linear-gradient(45deg, #7b2ff7, #ff4ecd);
+}
+
+.role-buttons button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+                                                    

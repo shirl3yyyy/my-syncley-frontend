@@ -1,4 +1,6 @@
  import React from 'react';
+ import './Features.css';
+ import { useNavigate } from 'react-router-dom';
  
  function Features() {
     
@@ -24,11 +26,6 @@
             <div className="feature-card">
                 <h3>Inspiration Sharing</h3>
                 <p>Share ideas and inspiration with your team to foster creativity and innovation.</p>
-            </div>
-
-            <div className="feature-card">
-                <h3>Secure Payments</h3>
-                <p>We ensure that your payments are safe and secure through our trusted payment gateway.</p>
             </div>
         </div>
     </section>
