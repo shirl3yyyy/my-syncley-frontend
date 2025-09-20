@@ -1,0 +1,26 @@
+.about{
+padding: 80px 150px;
+background: #78daf5;
+}
+
+.about h2{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2.5em;
+    color: #333;
+}
+
+.about-grid{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.about-card{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
