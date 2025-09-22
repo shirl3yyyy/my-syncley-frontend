@@ -2,13 +2,22 @@
   max-width: 400px;
   margin: 80px auto;
   padding: 40px 30px;
-  background: #fff;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   gap: 20px;
   text-align: center;
+  transition: all 0.3s ease;
+  background: #fff;
+}
+
+.signup-container.freelancer {
+  border-top: 5px solid #00f7ff;
+}
+
+.signup-container.client {
+  border-top: 5px solid #7b2ff7;
 }
 
 .signup-title {
@@ -46,8 +55,7 @@
   box-shadow: 0 0 8px rgba(123, 47, 247, 0.3);
 }
 
-
-.signup-form button {
+.signup-form .hero-button {
   padding: 12px 20px;
   border-radius: 25px;
   font-weight: bold;
@@ -59,11 +67,10 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.signup-form button:hover {
+.signup-form .hero-button:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
 }
-
 
 @media (max-width: 480px) {
   .signup-container {
