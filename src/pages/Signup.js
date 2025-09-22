@@ -24,16 +24,16 @@ function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form data submitted:", formData, "Role:", role);
-    // You can call your API here
   }
 
+  const containerClass = `signup-container ${role || ""}`;
+
   return (
-    <div className="signup-container">
+    <div className={containerClass}>
       <h2 className="signup-title">
         Sign Up as {role ? role.charAt(0).toUpperCase() + role.slice(1) : "User"}
       </h2>
       <form onSubmit={handleSubmit} className="signup-form">
-
         <label>Username:</label>
         <input
           type="text"
@@ -64,7 +64,19 @@ function Signup() {
           required
         />
 
-        <button type="submit">Signup</button>
+        <label>Confirm Password:</label>
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm your password"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          required
+        />
+
+        <button type="submit" className="hero-button">
+          Sign Up
+        </button>
       </form>
     </div>
   );
