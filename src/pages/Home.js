@@ -1,20 +1,25 @@
 import Features from '../components/layout/Features';
 import Hero from '../components/layout/Hero';
-import About from '../components/layout/About';
 import CTA from '../components/layout/CTA';
 import HowItWorks from '../components/layout/HowItWorks';
 import Testimonials from '../components/layout/Testimonials';
-import Board from './CollabBoard';
+import Services from '../components/Services';
+import Trusted from '../components/layout/Trusted';
+
+
+console.log("Services component loaded ✅");
 
 
 function Home() {
   return (
     <div> 
         <Hero />
+        <Trusted />
+        <Services />
         <HowItWorks />
         <Features />
-        <About />
-        <HowItWorks />
+        
+        <Testimonials />
         <CTA />
         
     </div>
