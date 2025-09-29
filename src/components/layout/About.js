@@ -1,7 +1,16 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import './About.css';
  
  function About() {
+    const navigate = useNavigate();
+
+    const handleJoinUs = () => {
+        navigate("/role-selection")
+
+    };
+
   return (
     <section className="about">
         <h2>About Syncley</h2>
@@ -30,7 +39,7 @@ import './About.css';
             </div>
         </div>
 
-        <button className="about-button">Join Us</button>
+        <button className="about-button" onClick = {handleJoinUs} >Join Us</button>
     </section>
   );
 }
