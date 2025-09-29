@@ -1,14 +1,14 @@
 .trusted-by {
   padding: 50px 20px;
-  background: #f9f9f9;
+  background: #ffffff;
   text-align: center;
 }
 
 .trusted-text {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 1.2rem;
-  color: #555;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2.9rem;
+  color: #393838;
   margin-bottom: 30px;
 }
 
