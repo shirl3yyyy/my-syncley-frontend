@@ -1,5 +1,5 @@
 import React from "react";
-import './Trusted.css'
+import './Trusted.css';
 
 const logos = [
   '/logos/google.svg',
@@ -9,15 +9,20 @@ const logos = [
 ];
 
 function Trusted() {
+  // Duplicate logos for seamless scrolling
+  const repeatedLogos = [...logos, ...logos];
+
   return (
     <section className="trusted-by">
       <p className="trusted-text">Trusted by leading companies</p>
       <div className="trusted-logos">
-        {logos.map((logo, index) => (
-          <div className="trusted-logo-card" key={index}>
-            <img src={logo} alt={`logo ${index}`} />
-          </div>
-        ))}
+        <div className="trusted-logos-track">
+          {repeatedLogos.map((logo, index) => (
+            <div className="trusted-logo-card" key={index}>
+              <img src={logo} alt={`logo ${index}`} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
