@@ -1,6 +1,6 @@
 import React from "react";
 import './HowItWorks.css';
-import { FaUserPlus, FaIdBadge, FaSearch, FaComment, FaCheckCircle } from "react-icons/fa";
+import { FaUserPlus, FaIdBadge, FaSearch, FaComment, FaCheckCircle, FaMoneyBillWave, FaStar, FaHandshake } from "react-icons/fa";
 
 function HowItWorks() {
   const steps = [
@@ -28,6 +28,21 @@ function HowItWorks() {
       icon: <FaCheckCircle />,
       title: "Complete the Project",
       description: "Work together to complete the project and achieve your goals."
+    },
+    {
+      icon: <FaMoneyBillWave />,
+      title: "Secure Payments",
+      description: "Ensure safe transactions with our protected payment system."
+    },
+    {
+      icon: <FaStar />,
+      title: "Get Rated & Reviewed",
+      description: "Build your reputation through client reviews and ratings."
+    },
+    {
+      icon: <FaHandshake />,
+      title: "Grow Your Network",
+      description: "Connect with more freelancers and clients for future opportunities."
     }
   ];
 
