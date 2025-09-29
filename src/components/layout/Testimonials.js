@@ -1,61 +1,46 @@
-import React, { useState, useEffect, useRef } from "react";
-import './Testimonials.css';
+import React from "react";
+import "./Testimonials.css";
+
+import aliceImg from "../../assets/alice.jpg";
+import bobImg from "../../assets/bob.jpg";
+import catherineImg from "../../assets/catherine.jpg";
+import sophiaImg from "../../assets/sophia.jpg";
+import davidImg from "../../assets/david.jpg";
+import emilyImg from "../../assets/emily.jpg";    
+import jamesImg from "../../assets/james.jpg";
 
 function Testimonials() {
   const testimonials = [
-    { name: "Alice Johnson", role: "Freelancer", text: "Syncley has transformed the way I collaborate with clients." },
-    { name: "Bob Smith", role: "Client", text: "Finding the right freelancer has never been easier." },
-    { name: "Catherine Lee", role: "Freelancer", text: "The project management tools saved me so much time!" },
-    { name: "Sophia Lee", role: "Freelancer", text: "I love how easy it is to showcase my skills and get work." },
-    { name: "David Kim", role: "Client", text: "The platform made collaborating with remote teams seamless." },
-    { name: "Emily Davis", role: "Freelancer", text: "Syncley helped me grow my freelance business faster than I imagined." },
-    { name: "James Wilson", role: "Client", text: "I can manage multiple projects with talented freelancers effortlessly." }
+    { name: "Alice Johnson", role: "Freelancer", text: "Syncley has transformed the way I collaborate with clients.", rating: 5, image: aliceImg },
+    { name: "Bob Smith", role: "Client", text: "Finding the right freelancer has never been easier.", rating: 4, image: bobImg },
+    { name: "Catherine Lee", role: "Freelancer", text: "The project management tools saved me so much time!", rating: 5, image: catherineImg },
+    { name: "Sophia Lee", role: "Freelancer", text: "I love how easy it is to showcase my skills and get work.", rating: 5, image: sophiaImg },
+    { name: "David Kim", role: "Client", text: "The platform made collaborating with remote teams seamless.", rating: 4, image: davidImg },
+    { name: "Emily Davis", role: "Freelancer", text: "Syncley helped me grow my freelance business faster than I imagined.", rating: 5, image: emilyImg },
+    { name: "James Wilson", role: "Client", text: "I can manage multiple projects with talented freelancers effortlessly.", rating: 5, image: jamesImg }
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const cardWidthRef = useRef(0);
-
-  const nextTestimonial = () => {
-    setCurrentIndex(prev => prev + 1);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentIndex(prev => prev - 1);
-  };
-
-  useEffect(() => {
-    const interval = setInterval(nextTestimonial, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Duplicate array for seamless infinite scroll
   const infiniteTestimonials = [...testimonials, ...testimonials];
 
   return (
     <section className="testimonials">
       <h2>What our lovely users say</h2>
-      <div className="testimonial-container">
-        <button className="carousel-btn left" onClick={prevTestimonial}>&lt;</button>
-        <div className="testimonial-cards-wrapper">
-          <div
-            className="testimonial-cards"
-            style={{
-              transform: `translateX(-${currentIndex * 320}px)`,
-              transition: 'transform 0.5s ease-in-out',
-              width: `${infiniteTestimonials.length * 320}px`
-            }}
-          >
-            {infiniteTestimonials.map((t, idx) => (
-              <div className="testimonial-card" key={idx}>
-                <div className="testimonial-avatar">{t.name[0]}</div>
-                <h3>{t.name}</h3>
-                <p className="testimonial-role">{t.role}</p>
-                <p className="testimonial-text">"{t.text}"</p>
+      <div className="testimonial-marquee">
+        <div className="testimonial-track">
+          {infiniteTestimonials.map((t, idx) => (
+            <div className="testimonial-card" key={idx}>
+              <img src={t.image} alt={t.name} className="testimonial-img" />
+              <h3>{t.name}</h3>
+              <p className="testimonial-role">{t.role}</p>
+              <div className="testimonial-stars">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span key={i} className={i < t.rating ? "star filled" : "star"}>★</span>
+                ))}
               </div>
-            ))}
-          </div>
+              <p className="testimonial-text">"{t.text}"</p>
+            </div>
+          ))}
         </div>
-        <button className="carousel-btn right" onClick={nextTestimonial}>&gt;</button>
       </div>
     </section>
   );
