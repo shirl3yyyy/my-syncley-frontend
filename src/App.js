@@ -8,6 +8,7 @@ import RoleSelection from './pages/RoleSelection';
 import CollabBoard from './pages/CollabBoard';
 import Hero from './components/layout/Hero';
 import Features from './components/layout/Features';
+import About from './components/layout/About';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -23,9 +24,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/features" element={<Features />} />
-        <Route path="/boards" element={<CollabBoard/>} />
+        <Route path="/board" element={<CollabBoard/>} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/inspiration" element={<RoleSelection />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </Router>
