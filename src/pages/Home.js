@@ -5,6 +5,7 @@ import HowItWorks from '../components/layout/HowItWorks';
 import Testimonials from '../components/layout/Testimonials';
 import Services from '../components/Services';
 import Trusted from '../components/layout/Trusted';
+import Stats from '../components/layout/Stats';
 
 
 console.log("Services component loaded ✅");
@@ -16,9 +17,9 @@ function Home() {
         <Hero />
         <Trusted />
         <Services />
-        <HowItWorks />
         <Features />
-        
+        <HowItWorks />
+        <Stats />
         <Testimonials />
         <CTA />
         
