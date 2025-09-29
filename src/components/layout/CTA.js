@@ -1,7 +1,13 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import './CTA.css'
 
 function CTA() {
+    const navigate = useNavigate();
+
+    const handleGetStarted = () => {
+        navigate("/role-selection");
+    };
     return(
         <section className="cta">
             <h2>Ready to get started?</h2>
