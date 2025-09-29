@@ -5,6 +5,7 @@
   background: #f0f4ff;
   overflow-x: auto;
   min-height: 80vh;
+  font-family: 'Inter', sans-serif;
 }
 
 .board-column {
@@ -16,8 +17,14 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.board-column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
 .board-column h3 {
   text-align: center;
+  font-family: 'Merriweather', serif;
   font-weight: 700;
   font-size: 1.4rem;
   background: linear-gradient(135deg, #00f7ff, #7b2ff7);
@@ -34,8 +41,9 @@
   margin-bottom: 12px;
   border-radius: 12px;
   font-weight: 600;
+  font-family: 'Inter', sans-serif;
   background: #f9f9ff;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .task-card:hover {
@@ -51,9 +59,10 @@
 
 .add-task input {
   flex: 1;
-  padding: 6px;
+  padding: 6px 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
+  font-family: 'Inter', sans-serif;
 }
 
 .add-task-btn {
@@ -63,9 +72,61 @@
   padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .add-task-btn:hover {
   transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.board-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.board-container::-webkit-scrollbar-track {
+  background: #e0e4ff;
+  border-radius: 4px;
+}
+
+.board-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #00f7ff, #7b2ff7);
+  border-radius: 4px;
+}
+
+@media (max-width: 992px) {
+  .board-container {
+    flex-direction: column;
+    padding: 20px;
+    min-height: auto;
+  }
+
+  .board-column {
+    min-width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .task-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .add-task {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .add-task input {
+    width: 100%;
+  }
+
+  .add-task-btn {
+    width: 100%;
+    text-align: center;
+  }
 }

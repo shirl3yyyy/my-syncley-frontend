@@ -15,7 +15,7 @@
 }
 
 .why-left h2 {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Merriweather', serif;
   font-size: 2.8rem;
   font-weight: 700;
   margin-bottom: 20px;
@@ -25,7 +25,7 @@
 }
 
 .why-left p {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.1rem;
   margin-bottom: 25px;
   color: #555;
@@ -38,12 +38,14 @@
 }
 
 .why-left li {
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
   margin-bottom: 15px;
-  padding-left: 20px;
+  padding-left: 25px;
   position: relative;
   color: #333;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .why-left li::before {
@@ -52,6 +54,10 @@
   left: 0;
   color: #7b2ff7;
   font-weight: bold;
+}
+
+.why-left li:hover {
+  color: #7b2ff7;
 }
 
 /* --- Video Section --- */
@@ -69,11 +75,12 @@
   border-radius: 20px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .why-right video:hover {
   transform: scale(1.03);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.15);
 }
 
 /* --- Responsive --- */

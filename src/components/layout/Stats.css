@@ -3,14 +3,14 @@
   background: linear-gradient(135deg, #7b2ff7, #00f7ff);
   text-align: center;
   font-family: "Inter", sans-serif;
-  color: #fff; /* default text color for contrast */
+  color: #fff;
 }
 
 .achievements h2 {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 50px;
-  /* gradient text for heading */
+  font-family: "Merriweather", serif;
   background: linear-gradient(135deg, #ffffff, #e0f7ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -25,7 +25,7 @@
 }
 
 .stat-card {
-  background: rgba(255, 255, 255, 0.15); /* semi-transparent to blend with gradient */
+  background: rgba(255, 255, 255, 0.15);
   padding: 30px 20px;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -42,7 +42,8 @@
 .stat-card h3 {
   font-size: 2rem;
   font-weight: 700;
-  color: #fff; /* keep numbers readable */
+  font-family: "Merriweather", serif;
+  color: #fff;
   margin-bottom: 10px;
 }
 
@@ -50,10 +51,10 @@
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.5px;
+  font-family: "Inter", sans-serif;
   color: #e0f7ff;
 }
 
-/* Responsive tweaks */
 @media (max-width: 768px) {
   .achievements h2 {
     font-size: 2rem;

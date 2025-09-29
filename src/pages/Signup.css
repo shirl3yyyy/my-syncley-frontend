@@ -10,6 +10,7 @@
   text-align: center;
   transition: all 0.3s ease;
   background: #fff;
+  font-family: 'Inter', sans-serif;
 }
 
 .signup-container.freelancer {
@@ -21,8 +22,9 @@
 }
 
 .signup-title {
+  font-family: 'Merriweather', serif;
   font-size: 1.8rem;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 20px;
   background: linear-gradient(45deg, #00f7ff, #7b2ff7);
   -webkit-background-clip: text;
@@ -46,6 +48,7 @@
   border-radius: 10px;
   border: 1px solid #ccc;
   font-size: 1rem;
+  font-family: 'Inter', sans-serif;
   transition: all 0.3s ease;
 }
 
@@ -58,18 +61,20 @@
 .signup-form .hero-button {
   padding: 12px 20px;
   border-radius: 25px;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1rem;
   color: #fff;
+  font-family: 'Inter', sans-serif;
   background: linear-gradient(45deg, #00f7ff, #7b2ff7);
   border: none;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .signup-form .hero-button:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+  opacity: 0.95;
 }
 
 @media (max-width: 480px) {

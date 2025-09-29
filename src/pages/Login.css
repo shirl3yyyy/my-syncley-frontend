@@ -9,25 +9,24 @@
   flex-direction: column;
   gap: 20px;
   text-align: center;
+  font-family: 'Inter', sans-serif;
 }
 
-
 .login-title {
+  font-family: 'Merriweather', serif;
   font-size: 1.8rem;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 20px;
   background: linear-gradient(45deg, #00f7ff, #7b2ff7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-
 .login-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-
 
 .login-form label {
   text-align: left;
@@ -40,6 +39,7 @@
   border-radius: 10px;
   border: 1px solid #ccc;
   font-size: 1rem;
+  font-family: 'Inter', sans-serif;
   transition: all 0.3s ease;
 }
 
@@ -49,24 +49,24 @@
   box-shadow: 0 0 8px rgba(123, 47, 247, 0.3);
 }
 
-
 .login-button {
   padding: 12px 20px;
   border-radius: 25px;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1rem;
   color: #fff;
+  font-family: 'Inter', sans-serif;
   background: linear-gradient(45deg, #00f7ff, #7b2ff7);
   border: none;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .login-button:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 247, 255, 0.5);
+  opacity: 0.95;
 }
-
 
 @media (max-width: 480px) {
   .login-container {
