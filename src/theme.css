@@ -1,0 +1,70 @@
+/* theme.css */
+
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap");
+
+:root {
+  --primary: #0d6efd;
+  --secondary: #7b2ff7;
+  --gradient: linear-gradient(45deg, var(--primary), var(--secondary));
+  --text-dark: #111;
+  --text-light: #f9f9f9;
+  --text-muted: #888;
+  --bg-dark: #111;
+  --bg-light: #fff;
+
+  --radius: 12px;
+  --transition: 0.3s ease;
+}
+
+/* Reset-ish */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* Buttons (base) */
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+button.primary {
+  background: var(--gradient);
+  color: #fff;
+}
+
+button.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(123, 47, 247, 0.4);
+}
+
+button.outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+button.outline:hover {
+  background: var(--primary);
+  color: #fff;
+}
