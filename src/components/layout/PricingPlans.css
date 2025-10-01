@@ -1,0 +1,141 @@
+/* Section container */
+.pricing {
+  padding: 80px 10%;
+  text-align: center;
+  background: #f9fbff;
+  font-family: "Inter", sans-serif;
+}
+
+.pricing h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #0d6efd, #7b2ff7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pricing-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 50px;
+}
+
+/* Grid */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* Pricing Card */
+.pricing-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(13, 110, 253, 0.15);
+}
+
+/* Highlighted plan */
+.pricing-card.highlight {
+  border: 2px solid transparent;
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(45deg, #0d6efd, #7b2ff7) border-box;
+  transform: scale(1.05);
+}
+
+/* Title */
+.pricing-card h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* Price */
+.price {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #0d6efd;
+}
+
+.price span {
+  font-size: 1rem;
+  color: #666;
+  font-weight: normal;
+}
+
+/* Description */
+.description {
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+/* Features list */
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px;
+  text-align: left;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.check-icon {
+  color: #0d6efd;
+  margin-right: 10px;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Buttons */
+.pricing-btn {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #0d6efd, #7b2ff7);
+  color: white;
+  box-shadow: 0 4px 10px rgba(123, 47, 247, 0.25);
+}
+
+.pricing-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(13, 110, 253, 0.3);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .pricing h2 {
+    font-size: 2rem;
+  }
+
+  .pricing-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .pricing-card {
+    padding: 30px 20px;
+  }
+}
