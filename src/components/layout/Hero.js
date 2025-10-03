@@ -1,52 +1,51 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import heroImage from '../../assets/hero.jpg';
-import './Hero.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Briefcase, Laptop } from "lucide-react"; 
+import heroImg from "../../assets/hero.jpg"; 
+import "./Hero.css";
 
 function Hero() {
   const navigate = useNavigate();
-  const [query, setQuery] = useState("");
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (query.trim()) navigate(`/search?query=${encodeURIComponent(query)}`);
-  };
 
   return (
-    <div className="hero-modern elegant-hero">
+    <section className="hero-modern">
+      {/* LEFT SIDE */}
       <div className="hero-modern-left">
         <h1>
-          Collaborate <span className="gradient-text">Smarter</span>, Achieve Faster
+          Find <span className="gradient-text">Top Talent</span> & Build Your Dream Project
         </h1>
         <p className="subtext">
-          From concept to completion, Syncley empowers modern teams to work together seamlessly. Boost productivity and creativity in a single platform.
+          Whether you’re a client searching for skilled freelancers or a freelancer 
+          looking for exciting projects — we’ve got you covered.
         </p>
 
-        <form className="hero-search" onSubmit={handleSearch}>
-          <input
-            type="text"
-            placeholder="Search for services..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button type="submit">Search</button>
-        </form>
+        {/* CTA BUTTONS */}
+        <div className="hero-buttons">
+          <button
+            className="hero-btn client-btn"
+            onClick={() => navigate("/signup-client")}
+          >
+            <Briefcase size={20} className="btn-icon" />
+            Join as Client
+          </button>
 
-        <button
-          className="hero-modern-button primary-btn"
-          onClick={() => navigate('/inspiration')}
-        >
-          Get Started
-        </button>
-      </div>
-
-      <div className="hero-modern-right">
-        <div className="hero-image-wrapper elegant-image">
-          <img src={heroImage} alt="Team Collaboration" />
-          <div className="hero-overlay"></div>
+          <button
+            className="hero-btn freelancer-btn"
+            onClick={() => navigate("/signup-freelancer")}
+          >
+            <Laptop size={20} className="btn-icon" />
+            Join as Freelancer
+          </button>
         </div>
       </div>
-    </div>
+
+      {/* RIGHT SIDE IMAGE */}
+      <div className="hero-modern-right">
+        <div className="hero-image-wrapper">
+          <img src={heroImg} alt="Collaboration workspace" />
+        </div>
+      </div>
+    </section>
   );
 }
 

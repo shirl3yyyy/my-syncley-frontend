@@ -1,47 +1,78 @@
 import React from "react";
+import Slider from "react-slick";
+import { FaQuoteLeft } from "react-icons/fa";
 import "./Testimonials.css";
-
-import aliceImg from "../../assets/alice.jpg";
-import bobImg from "../../assets/bob.jpg";
-import catherineImg from "../../assets/catherine.jpg";
-import sophiaImg from "../../assets/sophia.jpg";
-import davidImg from "../../assets/david.jpg";
-import emilyImg from "../../assets/emily.jpg";    
-import jamesImg from "../../assets/james.jpg";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function Testimonials() {
   const testimonials = [
-    { name: "Alice Johnson", role: "Freelancer", text: "Syncley has transformed the way I collaborate with clients.", rating: 5, image: aliceImg },
-    { name: "Bob Smith", role: "Client", text: "Finding the right freelancer has never been easier.", rating: 4, image: bobImg },
-    { name: "Catherine Lee", role: "Freelancer", text: "The project management tools saved me so much time!", rating: 5, image: catherineImg },
-    { name: "Sophia Lee", role: "Freelancer", text: "I love how easy it is to showcase my skills and get work.", rating: 5, image: sophiaImg },
-    { name: "David Kim", role: "Client", text: "The platform made collaborating with remote teams seamless.", rating: 4, image: davidImg },
-    { name: "Emily Davis", role: "Freelancer", text: "Syncley helped me grow my freelance business faster than I imagined.", rating: 5, image: emilyImg },
-    { name: "James Wilson", role: "Client", text: "I can manage multiple projects with talented freelancers effortlessly.", rating: 5, image: jamesImg }
+    {
+      name: "Sarah Johnson",
+      role: "Freelancer - Web Developer",
+      feedback:
+        "Syncley connected me with amazing clients. The platform is easy to use, and payments are always secure.",
+      img: "https://randomuser.me/api/portraits/women/44.jpg",
+    },
+    {
+      name: "Michael Smith",
+      role: "Client - Startup Founder",
+      feedback:
+        "Hiring talent through Syncley saved us weeks of effort. The quality of freelancers is outstanding.",
+      img: "https://randomuser.me/api/portraits/men/32.jpg",
+    },
+    {
+      name: "Emily Carter",
+      role: "Freelancer - Graphic Designer",
+      feedback:
+        "I love how seamless the project process is. I’ve built long-term relationships with clients here.",
+      img: "https://randomuser.me/api/portraits/women/68.jpg",
+    },
+    {
+      name: "James Wilson",
+      role: "Client - Agency Owner",
+      feedback:
+        "Managing multiple projects and freelancers is so much easier with Syncley’s dashboard.",
+      img: "https://randomuser.me/api/portraits/men/55.jpg",
+    },
   ];
 
-  const infiniteTestimonials = [...testimonials, ...testimonials];
+  const settings = {
+    dots: true,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    speed: 600,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } },
+    ],
+  };
 
   return (
     <section className="testimonials">
-      <h2>What our lovely users say</h2>
-      <div className="testimonial-marquee">
-        <div className="testimonial-track">
-          {infiniteTestimonials.map((t, idx) => (
-            <div className="testimonial-card" key={idx}>
-              <img src={t.image} alt={t.name} className="testimonial-img" />
-              <h3>{t.name}</h3>
-              <p className="testimonial-role">{t.role}</p>
-              <div className="testimonial-stars">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span key={i} className={i < t.rating ? "star filled" : "star"}>★</span>
-                ))}
+      <h2>What Our Users Say</h2>
+      <p className="subtitle">
+        Freelancers and clients love building together on Syncley.
+      </p>
+
+      <Slider {...settings} className="testimonials-slider">
+        {testimonials.map((t, i) => (
+          <div key={i} className="testimonial-card">
+            <FaQuoteLeft className="quote-icon" />
+            <p className="feedback">“{t.feedback}”</p>
+            <div className="user">
+              <img src={t.img} alt={t.name} />
+              <div>
+                <h4>{t.name}</h4>
+                <p>{t.role}</p>
               </div>
-              <p className="testimonial-text">"{t.text}"</p>
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        ))}
+      </Slider>
     </section>
   );
 }

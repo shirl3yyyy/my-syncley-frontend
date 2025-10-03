@@ -6,6 +6,8 @@ import Testimonials from '../components/layout/Testimonials';
 import Services from '../components/Services';
 import Trusted from '../components/layout/Trusted';
 import Stats from '../components/layout/Stats';
+import PricingPlans from '../components/layout/PricingPlans';
+
 
 
 console.log("Services component loaded ✅");
@@ -16,12 +18,14 @@ function Home() {
     <div> 
         <Hero />
         <Trusted />
+        <HowItWorks />
         <Services />
         <Features />
-        <HowItWorks />
         <Stats />
         <Testimonials />
+        <PricingPlans />
         <CTA />
+        
         
     </div>
   );

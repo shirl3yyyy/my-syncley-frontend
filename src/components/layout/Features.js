@@ -1,42 +1,70 @@
-import React from 'react';
-import './Features.css';
+import React from "react";
+import "./Features.css";
+import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 
-function Features() {
-  const features = [
-    "Seamless Collaboration",
-    "Real-Time Updates",
-    "Customizable Workflows",
-    "Secure & Reliable",
+function FeaturedFreelancers() {
+
+  const navigate = useNavigate();
+  const freelancers = [
+    {
+      name: "Sarah Johnson",
+      role: "UI/UX Designer",
+      rating: 4.9,
+      skills: ["Figma", "Adobe XD", "Sketch"],
+      img: "https://randomuser.me/api/portraits/women/44.jpg",
+    },
+    {
+      name: "Michael Lee",
+      role: "Full Stack Developer",
+      rating: 4.8,
+      skills: ["React", "Node.js", "MongoDB"],
+      img: "https://randomuser.me/api/portraits/men/46.jpg",
+    },
+    {
+      name: "Aisha Khan",
+      role: "Content Writer",
+      rating: 4.7,
+      skills: ["Copywriting", "SEO", "Blogging"],
+      img: "https://randomuser.me/api/portraits/women/47.jpg",
+    },
+    {
+      name: "Daniel Kim",
+      role: "Digital Marketer",
+      rating: 4.8,
+      skills: ["Google Ads", "SEO", "Analytics"],
+      img: "https://randomuser.me/api/portraits/men/48.jpg",
+    },
   ];
 
   return (
-    <div className="why-choose-us">
-      {/* Left: Text */}
-      <div className="why-left">
-        <h2>Why Choose Syncley?</h2>
-        <p>
-          We provide a modern platform that helps teams collaborate efficiently, stay organized, and deliver projects faster.
-        </p>
-        <ul>
-          {features.map((feature, idx) => (
-            <li key={idx}>{feature}</li>
-          ))}
-        </ul>
+    <section className="featured-freelancers">
+      <h2>Featured Freelancers</h2>
+      <div className="freelancer-grid">
+        {freelancers.map((freelancer, index) => (
+          <div className="freelancer-card" key={index}>
+            <img src={freelancer.img} alt={freelancer.name} />
+            <h3>{freelancer.name}</h3>
+            <p className="role">{freelancer.role}</p>
+            <div className="rating">
+              <FaStar className="star" /> {freelancer.rating}
+            </div>
+            <div className="skills">
+              {freelancer.skills.map((skill, i) => (
+                <span key={i} className="skill-tag">
+                  {skill}
+                </span>
+              ))}
+            </div>
+            {/* Hire Now Button */}
+            <button className="hire-btn">Hire Now</button>
+          </div>
+        ))}
       </div>
-
-      {/* Right: Video */}
-      <div className="why-right">
-        <video
-          src="/videos/hero.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-      </div>
-    </div>
+      <button className="view-all-btn">View All Freelancers</button>
+    </section>
   );
 }
 
-export default Features;
+export default FeaturedFreelancers;

@@ -11,22 +11,37 @@ function Stats() {
   ];
 
   const [counts, setCounts] = useState(stats.map(() => 0));
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    if (currentIndex >= stats.length) return;
+
+    let progress = 0;
+    const target = stats[currentIndex].value;
+    const step = Math.ceil(target / 80); // speed of animation
+
     const interval = setInterval(() => {
-      setCounts((prev) =>
-        prev.map((count, i) =>
-          Math.min(count + Math.ceil(stats[i].value / 100), stats[i].value)
-        )
-      );
+      progress += step;
+      if (progress >= target) {
+        progress = target;
+        clearInterval(interval);
+        setCurrentIndex((prev) => prev + 1); // move to next stat
+      }
+      setCounts((prev) => {
+        const updated = [...prev];
+        updated[currentIndex] = progress;
+        return updated;
+      });
     }, 30);
 
     return () => clearInterval(interval);
-  }, [stats]);
+  }, [currentIndex, stats]);
 
   return (
     <section className="achievements">
       <h2>Our Impact in Numbers</h2>
+      <p className="stats-subtitle">Trusted by freelancers and clients worldwide 🚀</p>
+
       <div className="stats-container">
         {stats.map((stat, index) => (
           <div className="stat-card" key={index}>

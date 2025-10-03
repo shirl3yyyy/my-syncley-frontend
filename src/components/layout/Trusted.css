@@ -1,73 +1,68 @@
 .trusted-by {
-  padding: 50px 20px;
-  background: #ffffff;
+  padding: 4rem 2rem;
   text-align: center;
+  background: #fff;
+  overflow: hidden;
 }
 
 .trusted-text {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 30px;
-  font-family: 'Merriweather', serif;
-  letter-spacing: -0.5px;
-}
-
-.trusted-text span {
-  display: inline-block;
-  background: linear-gradient(135deg, #7b2ff7, #00f7ff);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #111;
+  background: linear-gradient(90deg, #0d6efd, #7b2ff7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Carousel container */
 .trusted-logos {
-  display: flex;
-  overflow: hidden;
-  align-items: center;
   position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
-/* Animation wrapper */
 .trusted-logos-track {
   display: flex;
-  animation: scroll 20s linear infinite;
+  gap: 3rem;
+  animation: scroll 18s linear infinite;
+  width: max-content;
 }
 
-/* Logo card */
 .trusted-logo-card {
-  flex: 0 0 120px;
+  flex: 0 0 auto;
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin: 0 30px;
-  opacity: 0.8;
-  transition: all 0.3s ease;
+  justify-content: center;
 }
 
 .trusted-logo-card img {
-  max-width: 100%;
-  max-height: 50px;
-  object-fit: contain;
+  height: 40px;
+  filter: grayscale(100%) brightness(0.3);
+  opacity: 0.8;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
 }
 
-.trusted-logo-card:hover {
+.trusted-logo-card img:hover {
+  transform: scale(1.1);
+  filter: grayscale(0%) brightness(1);
   opacity: 1;
-  transform: scale(1.05);
 }
 
-/* Animation keyframes */
 @keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .trusted-logo-card {
-    flex: 0 0 80px;
-    margin: 0 20px;
+  .trusted-text {
+    font-size: 1rem;
   }
   .trusted-logo-card img {
-    max-height: 40px;
+    height: 32px;
   }
 }

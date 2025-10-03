@@ -1,57 +1,35 @@
-import React from "react";
-import './HowItWorks.css';
-import { FaUserPlus, FaIdBadge, FaSearch, FaComment, FaCheckCircle, FaMoneyBillWave, FaStar, FaHandshake } from "react-icons/fa";
+import { FaUserPlus, FaClipboardList, FaUsers } from "react-icons/fa";
+import "./HowItWorks.css";
 
 function HowItWorks() {
   const steps = [
     {
+      number: "1",
       icon: <FaUserPlus />,
-      title: "Create an Account",
-      description: "Sign up as a freelancer or client to get started."
+      title: "Sign Up",
+      description: "Create your free Syncley account in seconds and get started instantly."
     },
     {
-      icon: <FaIdBadge />,
-      title: "Set Up Your Profile",
-      description: "Complete your profile to showcase your skills and experience."
+      number: "2",
+      icon: <FaClipboardList />,
+      title: "Create Your Board",
+      description: "Organize your tasks, projects, or ideas in one simple dashboard."
     },
     {
-      icon: <FaSearch />,
-      title: "Find Work or Talent",
-      description: "Browse projects or freelancers to find the perfect match for your needs."
-    },
-    {
-      icon: <FaComment />,
+      number: "3",
+      icon: <FaUsers />,
       title: "Collaborate",
-      description: "Use our tools to communicate, manage projects, and share inspiration."
-    },
-    {
-      icon: <FaCheckCircle />,
-      title: "Complete the Project",
-      description: "Work together to complete the project and achieve your goals."
-    },
-    {
-      icon: <FaMoneyBillWave />,
-      title: "Secure Payments",
-      description: "Ensure safe transactions with our protected payment system."
-    },
-    {
-      icon: <FaStar />,
-      title: "Get Rated & Reviewed",
-      description: "Build your reputation through client reviews and ratings."
-    },
-    {
-      icon: <FaHandshake />,
-      title: "Grow Your Network",
-      description: "Connect with more freelancers and clients for future opportunities."
+      description: "Invite your team and work together in real-time to achieve goals faster."
     }
   ];
 
   return (
-    <section className="how-it-works">
-      <h2>How It Works</h2>
-      <div className="steps-grid">
+    <section className="howitworks">
+      <h2>How Syncley Works</h2>
+      <div className="steps">
         {steps.map((step, index) => (
           <div className="step-card" key={index}>
+            <div className="step-badge">{step.number}</div>
             <div className="step-icon">{step.icon}</div>
             <h3>{step.title}</h3>
             <p>{step.description}</p>

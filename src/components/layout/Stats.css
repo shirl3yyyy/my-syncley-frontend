@@ -1,66 +1,79 @@
 .achievements {
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #7b2ff7, #00f7ff);
+  padding: 80px 10%;
+  background: linear-gradient(135deg, #0d6efd, #7b2ff7);
   text-align: center;
   font-family: "Inter", sans-serif;
   color: #fff;
 }
 
 .achievements h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 50px;
-  font-family: "Merriweather", serif;
-  background: linear-gradient(135deg, #ffffff, #e0f7ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 10px;
 }
 
+.stats-subtitle {
+  font-size: 1.1rem;
+  color: #e5e5e5;
+  margin-bottom: 50px;
+}
+
+/* Stats grid */
 .stats-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
 }
 
+/* Card styling */
 .stat-card {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
   padding: 30px 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: #fff;
+  backdrop-filter: blur(6px);
 }
 
 .stat-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
 }
 
+/* Icon wrapper */
+.stat-icon {
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #0d6efd;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Number */
 .stat-card h3 {
   font-size: 2rem;
-  font-weight: 700;
-  font-family: "Merriweather", serif;
-  color: #fff;
+  font-weight: bold;
   margin-bottom: 10px;
+  color: #fff;
 }
 
+/* Label */
 .stat-card p {
   font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  font-family: "Inter", sans-serif;
-  color: #e0f7ff;
-}
-
-@media (max-width: 768px) {
-  .achievements h2 {
-    font-size: 2rem;
-  }
-
-  .stat-card h3 {
-    font-size: 1.6rem;
-  }
+  color: #e0e0e0;
 }
