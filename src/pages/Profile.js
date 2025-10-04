@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Profile.css";
 
+const defaultAvatar = "https://www.gravatar.com/avatar/?d=mp&f=y";
+
 function Profile() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
 
-   useEffect(() => {
+  useEffect(() => {
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -16,12 +18,12 @@ function Profile() {
       return;
     }
 
-     const fetchProfile = async () => {
+    const fetchProfile = async () => {
       try {
         const res = await axios.get("/api/profile/me", {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
 
         setUser(res.data);
@@ -44,22 +46,33 @@ function Profile() {
   return (
     <div className="profile-container">
       <h2>Welcome, {user.name}</h2>
-      <p><strong>Email:</strong> {user.email}</p>
-      <p><strong>Role:</strong> {user.role}</p>
-      {user.avatar && (
-        <img src={user.avatar} alt="User Avatar" width={100} height={100} />
-      )}
-    
+      <p>
+        <strong>Email:</strong> {user.email}
+      </p>
+      <p>
+        <strong>Role:</strong> {user.role}
+      </p>
+      <div className="avatar-wrapper">
+        <img
+          src={user.avatar || defaultAvatar}
+          alt="User Avatar"
+          width={100}
+          height={100}
+          className="avatar"
+        />
+      </div>
 
-    <button onClick={() => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
-  navigate("/login");
-}}>
-  Logout
-</button>
-</div>
-
+      <button
+        className="logout-button"
+        onClick={() => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          navigate("/login");
+        }}
+      >
+        Logout
+      </button>
+    </div>
   );
 }
 

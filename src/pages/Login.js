@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 import API from "../services/api";
 import "./Login.css";
 
@@ -37,6 +39,30 @@ function Login() {
     }
   };
 
+  // Handle Google Login Success
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const decoded = jwtDecode(credentialResponse.credential);
+      const { email, sub: googleId, name, picture } = decoded;
+
+      // Send Google info to your backend
+      const { data } = await API.post("/auth/google-login", {
+        email,
+        googleId,
+        name,
+        picture,
+      });
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      window.dispatchEvent(new Event("authChange"));
+      navigate(`/profile/${data.user.id}`);
+    } catch (error) {
+      console.error("Google login failed:", error);
+      setError("Google login failed");
+    }
+  };
+
   return (
     <div className="login-container">
       <h2 className="login-title">Login to Your Account</h2>
@@ -69,9 +95,20 @@ function Login() {
         </button>
       </form>
 
-      <p className="redirect-text">
-        Don’t have an account? <a href="/signup-client">Sign up</a>
-      </p>
+      <div className="divider">OR</div>
+      
+            <div className="social-login">
+              <GoogleLogin onSuccess={handleGoogleSuccess} onError={() => setError("Google login failed")} />
+      
+              <button className="x-login-button" onClick={() => alert("Coming soon!")}>
+                <img src="/assets/x-logo.svg" alt="X Logo" />
+                Continue with X
+              </button>
+            </div>
+      
+            <p className="redirect-text">
+              Don’t have an account? <a href="/signup-client">Sign up</a>
+            </p>
     </div>
   );
 }

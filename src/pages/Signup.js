@@ -1,24 +1,24 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { GoogleLogin } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
 import "./Signup.css";
 
 function Signup({ role: propRole }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // fallback to query param if no prop was passed
   const queryParams = new URLSearchParams(location.search);
   const queryRole = queryParams.get("role");
 
-  // final role = prop > query > default
   const role = propRole || queryRole || "client";
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const [error, setError] = useState("");
@@ -26,12 +26,13 @@ function Signup({ role: propRole }) {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
@@ -43,15 +44,36 @@ function Signup({ role: propRole }) {
         name: formData.name,
         email: formData.email,
         password: formData.password,
-        role
+        role,
       });
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      navigate(`/profile/${res.data.user._id}`); // redirect to their profile
+      navigate(`/profile/${res.data.user._id}`);
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
+    }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    try {
+      const decoded = jwtDecode(credentialResponse.credential);
+      const { email, sub: googleId, name, picture } = decoded;
+
+      const { data } = await axios.post("/api/auth/google-login", {
+        email,
+        googleId,
+        name,
+        picture,
+      });
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      navigate(`/profile/${data.user.id}`);
+    } catch (error) {
+      console.error("Google signup failed:", error);
+      setError("Google signup failed");
     }
   };
 
@@ -110,6 +132,15 @@ function Signup({ role: propRole }) {
           Sign Up
         </button>
       </form>
+
+      <div className="divider">OR</div>
+
+      <div className="social-login">
+        <GoogleLogin
+          onSuccess={handleGoogleSuccess}
+          onError={() => setError("Google signup failed")}
+        />
+      </div>
     </div>
   );
 }
