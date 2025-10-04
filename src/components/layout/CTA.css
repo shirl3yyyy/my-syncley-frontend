@@ -96,3 +96,14 @@
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-3px);
 }
+
+@media (max-width: 600px) {
+  .cta-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta-btn {
+    width: 100%;
+  }
+}

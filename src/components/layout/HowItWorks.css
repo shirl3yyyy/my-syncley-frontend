@@ -1,77 +1,97 @@
 .howitworks {
-  padding: 80px 20px;
-  text-align: center;
+  padding: 100px 20px;
   font-family: "Inter", sans-serif;
-  background: #fff;
-  color: #333;
+  background: #fdfdfd;
+  color: #6366f1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .howitworks h2 {
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-  font-weight: 700;
+  font-size: 2.8rem;
+  font-weight: 800;
   background: linear-gradient(45deg, #0d6efd, #7b2ff7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: #666;
+  margin-bottom: 60px;
 }
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-  max-width: 1100px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  padding: 0;
+  list-style: none;
 }
 
 .step-card {
-  background: #f9f9f9;
-  padding: 30px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #ffffff;
+  padding: 40px 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
   position: relative;
+  text-align: center;
 }
 
 .step-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.step-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .step-badge {
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
   background: linear-gradient(45deg, #0d6efd, #7b2ff7);
   color: #fff;
   font-weight: bold;
   font-size: 1rem;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  margin-bottom: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .step-icon {
-  font-size: 2.8rem;
-  margin: 30px 0 18px;
-  color: #0d6efd;
+  font-size: 3rem;
   background: linear-gradient(45deg, #0d6efd, #7b2ff7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: transform 0.3s ease;
+}
+
+.step-card:hover .step-icon {
+  transform: scale(1.15) rotate(5deg);
 }
 
 .step-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 12px;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #6366f1;
 }
 
 .step-card p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #555;
   line-height: 1.6;
 }

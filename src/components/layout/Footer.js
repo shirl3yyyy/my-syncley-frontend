@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
@@ -17,10 +18,11 @@ function Footer() {
         <div className="footer-column">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/board">Collab Board</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/board">Collab Board</Link></li>
+            {/* Update or remove these based on your routes */}
+            {/* <li><Link to="/projects">Projects</Link></li> */}
+            {/* <li><Link to="/contact">Contact</Link></li> */}
           </ul>
         </div>
 
@@ -28,9 +30,10 @@ function Footer() {
         <div className="footer-column">
           <h4>Support</h4>
           <ul>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/terms">Terms & Conditions</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
+            
+            <li><Link to="/faq">FAQ</Link></li> 
+            <li><Link to="/terms">Terms & Conditions</Link></li> 
+             <li><Link to="/privacy">Privacy Policy</Link></li> 
           </ul>
         </div>
 
@@ -38,10 +41,10 @@ function Footer() {
         <div className="footer-column">
           <h4>Follow Us</h4>
           <div className="social-icons">
-            <a href="#"><FaFacebookF /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaLinkedinIn /></a>
-            <a href="#"><FaInstagram /></a>
+            <a href="https://facebook.com/yourpage" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+            <a href="https://twitter.com/yourpage" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+            <a href="https://linkedin.com/company/yourpage" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+            <a href="https://instagram.com/yourpage" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
           </div>
         </div>
 

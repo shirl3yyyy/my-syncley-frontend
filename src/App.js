@@ -38,6 +38,9 @@ function App() {
         <Route path="/project/:id" element={<ProjectDetails />} />
         <Route path="/services" element={<Services />} />
         <Route path="/search" element={<SearchPage />} />
+
+        <Route path="*" element={<div style={{ padding: '2rem' }}><h2>404 - Page Not Found</h2></div>} />
+
       </Routes>
 
       <Footer />
