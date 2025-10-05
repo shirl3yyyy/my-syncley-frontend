@@ -50,7 +50,7 @@ function Navbar() {
         <div className={`st-navbar-links ${isOpen ? "active" : ""}`}>
           <NavLink to="/" className="st-navbar-link" onClick={() => setIsOpen(false)}>Home</NavLink>
           <NavLink to="/howitworks" className="st-navbar-link" onClick={() => setIsOpen(false)}>How It Works</NavLink>
-          <NavLink to="/board" className="st-navbar-link" onClick={() => setIsOpen(false)}>Board</NavLink>
+          <NavLink to="/about" className="st-navbar-link" onClick={() => setIsOpen(false)}>About</NavLink>
           
           {!isLoggedIn ? (
             <>

@@ -17,13 +17,13 @@ function CallToAction() {
         <div className="cta-buttons">
           <button
             className="cta-btn primary"
-            onClick={() => navigate("/signup-freelancer")}
+            onClick={() => navigate("/signup-client")}
           >
             <FaUserTie className="btn-icon" /> Hire Talent
           </button>
           <button
             className="cta-btn secondary"
-            onClick={() => navigate("/signup-client")}
+            onClick={() => navigate("/signup-freelancer")}
           >
             <FaRocket className="btn-icon" /> Find Work
           </button>

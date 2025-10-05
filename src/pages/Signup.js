@@ -1,5 +1,5 @@
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import axios from "axios";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
@@ -11,7 +11,6 @@ function Signup({ role: propRole }) {
 
   const queryParams = new URLSearchParams(location.search);
   const queryRole = queryParams.get("role");
-
   const role = propRole || queryRole || "client";
 
   const [formData, setFormData] = useState({
@@ -22,37 +21,36 @@ function Signup({ role: propRole }) {
   });
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
-      return;
+      setLoading(false);
+      return setError("Passwords do not match");
     }
 
     try {
-      const res = await axios.post("/api/auth/register", {
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
+      const { data } = await axios.post("/api/auth/register", {
+        ...formData,
         role,
       });
 
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-
-      navigate(`/profile/${res.data.user._id}`);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      navigate(`/profile/${data.user._id}`);
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -70,66 +68,63 @@ function Signup({ role: propRole }) {
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-      navigate(`/profile/${data.user.id}`);
+      navigate(`/profile/${data.user._id}`);
     } catch (error) {
-      console.error("Google signup failed:", error);
       setError("Google signup failed");
     }
   };
 
-  const containerClass = `signup-container ${role}`;
-
   return (
-    <div className={containerClass}>
+    <div className={`signup-container ${role}`}>
       <h2 className="signup-title">
         Sign Up as {role.charAt(0).toUpperCase() + role.slice(1)}
       </h2>
 
-      {error && <p className="error">{error}</p>}
+      {error && <p className="error-message">{error}</p>}
 
       <form onSubmit={handleSubmit} className="signup-form">
-        <label>Name:</label>
         <input
           type="text"
           name="name"
-          placeholder="Enter your name"
+          placeholder="Full Name"
           value={formData.name}
           onChange={handleChange}
           required
         />
 
-        <label>Email:</label>
         <input
           type="email"
           name="email"
-          placeholder="Enter your email"
+          placeholder="Email Address"
           value={formData.email}
           onChange={handleChange}
           required
         />
 
-        <label>Password:</label>
         <input
           type="password"
           name="password"
-          placeholder="Enter your password"
+          placeholder="Password"
           value={formData.password}
           onChange={handleChange}
           required
         />
 
-        <label>Confirm Password:</label>
         <input
           type="password"
           name="confirmPassword"
-          placeholder="Confirm your password"
+          placeholder="Confirm Password"
           value={formData.confirmPassword}
           onChange={handleChange}
           required
         />
 
-        <button type="submit" className="hero-button">
-          Sign Up
+        <button
+          type="submit"
+          className="hero-button"
+          disabled={loading}
+        >
+          {loading ? "Creating Account..." : "Sign Up"}
         </button>
       </form>
 
@@ -141,6 +136,11 @@ function Signup({ role: propRole }) {
           onError={() => setError("Google signup failed")}
         />
       </div>
+
+      <p className="signup-footer">
+        By signing up, you agree to our <a href="/terms">Terms</a> and{" "}
+        <a href="/privacy">Privacy Policy</a>.
+      </p>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   FaPaintBrush,
@@ -12,27 +12,53 @@ import {
   FaMusic,
   FaMobileAlt,
 } from "react-icons/fa";
+import axios from "axios";
 import "./Services.css";
 
-const services = [
-  { name: "Design", description: "Logos, branding, UI/UX & more", icon: <FaPaintBrush /> },
-  { name: "Development", description: "Web, mobile, full-stack projects", icon: <FaCode /> },
-  { name: "Writing", description: "Content, copywriting, translations", icon: <FaPenNib /> },
-  { name: "Marketing", description: "SEO, ads, social media campaigns", icon: <FaBullhorn /> },
-  { name: "Video & Animation", description: "Explainers, editing, motion design", icon: <FaVideo /> },
-  { name: "Business", description: "Consulting, finance, strategy", icon: <FaBriefcase /> },
-  { name: "Finance", description: "Accounting, investing, analysis", icon: <FaChartLine /> },
-  { name: "Support", description: "Customer service, virtual assistance", icon: <FaHeadset /> },
-  { name: "Music & Audio", description: "Production, voiceovers, sound design", icon: <FaMusic /> },
-  { name: "Apps", description: "iOS, Android, cross-platform solutions", icon: <FaMobileAlt /> },
-];
+// Map category names to icons
+const iconMap = {
+  Design: <FaPaintBrush />,
+  Development: <FaCode />,
+  Writing: <FaPenNib />,
+  Marketing: <FaBullhorn />,
+  "Video & Animation": <FaVideo />,
+  Business: <FaBriefcase />,
+  Finance: <FaChartLine />,
+  Support: <FaHeadset />,
+  "Music & Audio": <FaMusic />,
+  Apps: <FaMobileAlt />,
+};
 
 function Services() {
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        setLoading(true);
+        // Replace this URL with your backend API endpoint for fetching categories
+        const res = await axios.get("/api/categories");
+        setServices(res.data);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load categories");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   const handleClick = (category) => {
     navigate(`/search?category=${encodeURIComponent(category)}`);
   };
+
+  if (loading) return <p>Loading categories...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <section className="categories">
@@ -44,7 +70,7 @@ function Services() {
             className="category-card"
             onClick={() => handleClick(cat.name)}
           >
-            <div className="category-icon">{cat.icon}</div>
+            <div className="category-icon">{iconMap[cat.name] || <FaBriefcase />}</div>
             <h3>{cat.name}</h3>
             <p>{cat.description}</p>
           </div>
