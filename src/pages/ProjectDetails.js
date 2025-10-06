@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./ProjectDetails.css";
 
@@ -6,7 +6,13 @@ function ProjectDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Placeholder data (later you’ll fetch this from API)
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    message: "",
+  });
+
+  // Placeholder project data
   const project = {
     id,
     title: `Amazing Project ${id}`,
@@ -16,6 +22,12 @@ function ProjectDetails() {
     client: "Acme Corp",
     price: "$500",
     status: "Open for proposals",
+  };
+
+  const handleSubmit = () => {
+    alert(`Application submitted!\nName: ${formData.name}\nMessage: ${formData.message}`);
+    setShowForm(false);
+    setFormData({ name: "", message: "" });
   };
 
   return (
@@ -32,12 +44,42 @@ function ProjectDetails() {
         </div>
 
         <div className="project-actions">
-          <button className="btn primary">Apply Now</button>
+          <button className="btn primary" onClick={() => setShowForm(true)}>
+            Apply Now
+          </button>
           <button className="btn secondary" onClick={() => navigate(-1)}>
             Back to Results
           </button>
         </div>
       </div>
+
+      {showForm && (
+        <div className="modal-overlay">
+          <div className="apply-modal">
+            <h2>Apply to {project.title}</h2>
+            <input
+              type="text"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            />
+            <textarea
+              placeholder="Your Message"
+              rows="4"
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            ></textarea>
+            <div className="modal-actions">
+              <button className="btn primary" onClick={handleSubmit}>
+                Submit
+              </button>
+              <button className="btn secondary" onClick={() => setShowForm(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
