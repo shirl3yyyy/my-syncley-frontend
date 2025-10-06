@@ -11,36 +11,52 @@ function Stats() {
   ];
 
   const [counts, setCounts] = useState(stats.map(() => 0));
-  const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Smooth counting animation
   useEffect(() => {
-    if (currentIndex >= stats.length) return;
+    stats.forEach((_, i) => {
+      let start = 0;
+      const target = stats[i].value;
+      const duration = 1500;
+      const startTime = performance.now();
 
-    let progress = 0;
-    const target = stats[currentIndex].value;
-    const step = Math.ceil(target / 80); // speed of animation
+      const animate = (time) => {
+        const progress = Math.min((time - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCounts((prev) => {
+          const updated = [...prev];
+          updated[i] = Math.floor(eased * target);
+          return updated;
+        });
+        if (progress < 1) requestAnimationFrame(animate);
+      };
 
-    const interval = setInterval(() => {
-      progress += step;
-      if (progress >= target) {
-        progress = target;
-        clearInterval(interval);
-        setCurrentIndex((prev) => prev + 1); // move to next stat
-      }
-      setCounts((prev) => {
-        const updated = [...prev];
-        updated[currentIndex] = progress;
-        return updated;
-      });
-    }, 30);
+      requestAnimationFrame(animate);
+    });
+  }, []);
 
-    return () => clearInterval(interval);
-  }, [currentIndex, stats]);
+  // Fade & scale animation on scroll
+  useEffect(() => {
+    const cards = document.querySelectorAll(".stat-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => cards.forEach((card) => observer.unobserve(card));
+  }, []);
 
   return (
     <section className="achievements">
       <h2>Our Impact in Numbers</h2>
-      <p className="stats-subtitle">Trusted by freelancers and clients worldwide 🚀</p>
+      <p className="stats-subtitle">
+        Trusted by freelancers and clients worldwide 🚀
+      </p>
 
       <div className="stats-container">
         {stats.map((stat, index) => (

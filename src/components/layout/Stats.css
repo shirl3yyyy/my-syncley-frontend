@@ -18,21 +18,61 @@
   margin-bottom: 50px;
 }
 
-/* Stats grid */
 .stats-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 30px;
 }
 
-/* Card styling */
+/* Base card styling */
 .stat-card {
+  position: relative;
   background: rgba(255, 255, 255, 0.08);
   padding: 30px 20px;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.6s ease;
   backdrop-filter: blur(6px);
+  opacity: 0;
+  transform: scale(0.9);
+  overflow: hidden;
+}
+
+.stat-card.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Gradient tint per card */
+.stat-card:nth-child(1) {
+  background: linear-gradient(135deg, rgba(13, 110, 253, 0.15), rgba(255,255,255,0.08));
+}
+.stat-card:nth-child(2) {
+  background: linear-gradient(135deg, rgba(123, 47, 247, 0.15), rgba(255,255,255,0.08));
+}
+.stat-card:nth-child(3) {
+  background: linear-gradient(135deg, rgba(0, 200, 150, 0.15), rgba(255,255,255,0.08));
+}
+.stat-card:nth-child(4) {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255,255,255,0.08));
+}
+
+/* Shine effect */
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+  transform: skewX(-25deg);
+  transition: left 0.8s ease;
+  border-radius: 16px;
+}
+
+.stat-card:hover::before {
+  left: 125%;
 }
 
 .stat-card:hover {
@@ -64,7 +104,6 @@
   }
 }
 
-/* Number */
 .stat-card h3 {
   font-size: 2rem;
   font-weight: bold;
@@ -72,8 +111,18 @@
   color: #fff;
 }
 
-/* Label */
 .stat-card p {
   font-size: 1rem;
   color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .achievements h2 {
+    font-size: 2rem;
+  }
+
+  .stats-subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
 }

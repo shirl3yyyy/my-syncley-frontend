@@ -56,7 +56,7 @@ function ProjectDetails() {
         client: "ShopX",
         price: "$2000",
         status: "Open for proposals",
-       // image: mobileImg,
+        image: mobileImg,
       },
       {
         id: "5",
