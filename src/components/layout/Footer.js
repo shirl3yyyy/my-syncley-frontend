@@ -8,25 +8,21 @@ function Footer() {
     <footer className="footer">
       <div className="footer-container">
         
-        {/* About Section */}
         <div className="footer-column">
           <h4>About Syncley</h4>
           <p>Syncley is a collaboration platform for freelancers and clients. Manage projects, chat in real-time, and stay productive together.</p>
         </div>
 
-        {/* Quick Links */}
+    
         <div className="footer-column">
           <h4>Quick Links</h4>
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/board">Collab Board</Link></li>
-            {/* Update or remove these based on your routes */}
-            {/* <li><Link to="/projects">Projects</Link></li> */}
-            {/* <li><Link to="/contact">Contact</Link></li> */}
           </ul>
         </div>
 
-        {/* Support */}
+        
         <div className="footer-column">
           <h4>Support</h4>
           <ul>
